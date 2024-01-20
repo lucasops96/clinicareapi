@@ -6,7 +6,7 @@ from .endereco_serializers import EnderecoSerializer
 class ProfissionalSaudeSerializer(ModelSerializer):
     class Meta:
         model = ProfissionalSaude
-        fields = ['id','use_custom','especialidade','conselho','numero_conselho','enderecos_atendimento']
+        fields = ['id','user_profissional','especialidade','conselho','numero_conselho','enderecos_atendimento']
 
-        use_custom = CustomUserSerializer(many=False,source='user')
-        enderecos_atendimento = EnderecoSerializer(many=True)
+    user_profissional = CustomUserSerializer(many=False,source='user')
+    enderecos_atendimento = EnderecoSerializer(many=True)
