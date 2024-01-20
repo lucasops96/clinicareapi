@@ -7,6 +7,7 @@ app_name = 'clinicareapi'
 
 router = SimpleRouter()
 router.register('clinicareapi/paciente',views.PacienteViewSet,basename='paciente')
+router.register('clinicareapi/profissional',views.ProfissionalSaudeViewSet,basename='profissional')
 
 urlpatterns = [
     path('',include(router.urls))
