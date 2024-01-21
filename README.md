@@ -6,11 +6,11 @@ Projeto consiste em uma API voltado para área da saúde, no qual, profissionais
 [] Autenticação JWT
 
 ## Requesitos Pacientes
-[] Registrar, Alterar e Deletar
+[] Deve ser possível um Paciente realizar seu registro
 [] Login
 [] Solicitar Consulta
 
 ## Requesitos Profissionais Saúde
-[] Registrar, Alterar e Deletar
+[] Deve ser possível um Profissional realizar seu registro
 [] Login
 [] Genreciar Consultas

@@ -8,5 +8,5 @@ class PacienteSerializer(ModelSerializer):
         model = Paciente
         fields = ['id','user_paciente','idade','peso','sexo','endereco']
     
-    user_paciente = CustomUserSerializer(many=False,source='user')
+    user_paciente = CustomUserSerializer(many=False)
     endereco = EnderecoSerializer(many=False)
