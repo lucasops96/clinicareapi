@@ -2,21 +2,21 @@
 Projeto consiste em uma API voltado para área da saúde, no qual, profissionais na sáude poderam gerenciar sua consultas com pacientes que tenham realizado agendamento. Pacientes cadastrados, podem marcar consultas com médicos de sua preferência e aproveitar um contato muito maior com diversos profissionais.
 
 ## Requesitos Não Funcionais
-[] Listar informações para Pacientes e Profissionais Saúde
-[] Autenticação JWT
+- [] Listar informações para Pacientes e Profissionais Saúde
+- [] Autenticação JWT
 
 ## Requesitos Pacientes
-[] Deve ser possível um Paciente realizar seu registro
-    password validado [x]
-    email validado [x]
-    cpf validado [x]
-[] Login
-[] Solicitar Consulta
+- [x] Deve ser possível um Paciente realizar seu registro
+    - [x] password validado 
+    - [x] email validado 
+    - [x] cpf validado
+- [] Login
+- [] Solicitar Consulta
 
 ## Requesitos Profissionais Saúde
-[x] Deve ser possível um Profissional realizar seu registro
-    password validado [x]
-    email validado [x]
-    cpf validado [x]
-[] Deve ser possível um Profissional realizar seu Login
-[] Deve ser possível um Profissional genreciar suas Consultas
+- [x] Deve ser possível um Profissional realizar seu registro
+    - [x] password validado 
+    - [x] email validado 
+    - [x] cpf validado
+- [] Deve ser possível um Profissional realizar seu Login
+- [] Deve ser possível um Profissional genreciar suas Consultas
