@@ -6,7 +6,7 @@ User = get_user_model()
 
 class CustomUser(models.Model):
     user_custom = models.OneToOneField(User,on_delete=models.PROTECT ,related_name='user_custom',null=True)
-    cpf = models.CharField(max_length=14,default='000.000.000-00')
+    cpf = models.CharField(max_length=14,default='000.000.000-00',unique=True)
     telefone = models.CharField(max_length=15,blank=True,null=True)
     is_profissional_saude = models.BooleanField(default=False)
 

@@ -14,6 +14,16 @@ class UserSerializer(ModelSerializer):
             raise serializers.ValidationError('A senha é obrigatória')
         
         return value
+    
+    def validate_email(self,value):
+        email = User.objects.filter(email=value)
+        if not value:
+            raise serializers.ValidationError('O e-mail é obrigatória')
+        
+        if email:
+            raise serializers.ValidationError('Este e-mail já foi cadastrado')
+        
+        return value
 
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data['password'])

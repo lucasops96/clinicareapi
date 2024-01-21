@@ -12,7 +12,6 @@ class ProfissionalSaudeSerializer(ModelSerializer):
     enderecos_atendimento = EnderecoSerializer(many=True)
 
     def create(self, validated_data):
-        print('----------',validated_data)
         user_data  = validated_data.pop('user_profissional')
         enderecos_data = validated_data.pop('enderecos_atendimento',[])
 
