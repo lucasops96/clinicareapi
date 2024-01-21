@@ -11,6 +11,9 @@ Projeto consiste em uma API voltado para área da saúde, no qual, profissionais
 [] Solicitar Consulta
 
 ## Requesitos Profissionais Saúde
-[] Deve ser possível um Profissional realizar seu registro
-[] Login
-[] Genreciar Consultas
+[x] Deve ser possível um Profissional realizar seu registro
+    password validado [x]
+    email validado []
+    cpf validado []
+[] Deve ser possível um Profissional realizar seu Login
+[] Deve ser possível um Profissional genreciar suas Consultas
