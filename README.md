@@ -19,4 +19,5 @@ Projeto consiste em uma API voltado para área da saúde, no qual, profissionais
     - [x] email validado 
     - [x] cpf validado
 - [] Deve ser possível um Profissional realizar seu Login
+- [] Deve ser possível um Profissional realizar Update no seu User
 - [] Deve ser possível um Profissional genreciar suas Consultas
