@@ -1,4 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.response import Response
 from ..serializers import CustomUserSerializer
 from ..models import CustomUser
 
@@ -19,4 +20,4 @@ class CustomUserViewSet(ModelViewSet):
 
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return super().partial_update(request, *args, **kwargs)
+        return Response(serializer.data)
