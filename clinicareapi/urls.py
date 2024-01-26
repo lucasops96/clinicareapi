@@ -1,7 +1,11 @@
 from django.urls import path,include
-
 from clinicareapi import views
 from rest_framework.routers import SimpleRouter
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
+)
 
 app_name = 'clinicareapi'
 
@@ -13,5 +17,10 @@ router.register('clinicareapi/user',views.UserViewSet,basename='user')
 router.register('clinicareapi/endereco',views.EnderecoViewSet,basename='endereco')
 
 urlpatterns = [
+
+    path('clinicare/api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('clinicare/api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('clinicare/api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+
     path('',include(router.urls))
 ]
