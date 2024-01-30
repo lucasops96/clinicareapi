@@ -21,3 +21,5 @@ Projeto consiste em uma API voltado para área da saúde, no qual, profissionais
 - [] Deve ser possível um Profissional realizar seu Login
 - [] Deve ser possível um Profissional realizar Update no seu User
 - [] Deve ser possível um Profissional genreciar suas Consultas
+
+- https://pythonacademy.com.br/blog/como-utilizar-as-class-based-views-do-django
