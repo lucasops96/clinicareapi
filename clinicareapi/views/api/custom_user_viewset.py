@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
-from ..serializers import CustomUserSerializer
-from ..models import CustomUser
+from ...serializers import CustomUserSerializer
+from ...models import CustomUser
 
 class CustomUserViewSet(ModelViewSet):
     queryset = CustomUser.objects.all()

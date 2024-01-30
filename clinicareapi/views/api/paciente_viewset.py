@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from ..serializers.paciente_serializers import PacienteSerializer
-from ..models import Paciente
+from ...serializers.paciente_serializers import PacienteSerializer
+from ...models import Paciente
 from rest_framework.response import Response
 
 class PacienteViewSet(ModelViewSet):

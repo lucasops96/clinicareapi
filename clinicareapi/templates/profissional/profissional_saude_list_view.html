@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    {% for profissional in object_list %}
+    <div class="card">
+        {{profissional.user_profissional}}
+        <div>
+            {{profissional.especialidade}}
+        </div>
+        <div>
+            {{profissional.conselho}}
+            {{profissional.numero_conselho}}
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
+
