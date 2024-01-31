@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Register Healthcare Professional {% endblock title %}
+
+{% block content %}
+    <div class="card mt-3 p-3"> 
+        <h4>Conheça o Clinicare: Simplificando a Gestão de Consultas para Profissionais da Saúde!</h4>
+        <p>Desperte o poder do Clini Care: A ferramenta definitiva para profissionais da saúde! Simplifique e aprimore a gestão das suas consultas de forma eficiente. Cadastre-se agora para experimentar uma plataforma intuitiva, projetada para atender às suas necessidades. Economize tempo, organize sua agenda e forneça um atendimento de excelência aos seus pacientes. Junte-se à comunidade Clinicare e transforme a maneira como você gerencia sua prática médica!</p>
+    </div>
+    <div class="card mt-3 p-3">
+        <h5>Este é o formulário de registro para Profissionais da Saúde</h5>
+        <form class="" action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username">
+                </div>
+                <div class="col-md-2">
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="first_name">First Name:</label>
+                    <input type="text" name="first_name">
+                </div>
+                <div class="col-md-3">
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" name="last_name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+

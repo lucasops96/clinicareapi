@@ -19,6 +19,7 @@ router.register('clinicareapi/endereco',views.EnderecoViewSet,basename='endereco
 
 urlpatterns = [
     path('',site.ProfissionalSaudeListView.as_view(),name='profissional_list_view'),
+    path('register/healthcare/professional',site.ProfissionalSaudeCreateView.as_view(),name='profissional_create_view'),
 
     path('clinicare/api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('clinicare/api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
