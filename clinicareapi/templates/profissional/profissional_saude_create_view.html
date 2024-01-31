@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Register Healthcare Professional {% endblock title %}
 
@@ -9,35 +10,105 @@
     </div>
     <div class="card mt-3 p-3">
         <h5>Este é o formulário de registro para Profissionais da Saúde</h5>
-        <form class="" action="" method="post">
+        <form class="form-register form-prevent-multi-submits " action="" method="post">
             {% csrf_token %}
             <div class="row">
                 <div class="col-md-3">
-                    <label for="username">Username:</label>
-                    <input type="text" name="username">
+                    <div class="label-form">
+                        {{form_user.first_name.label}}
+                    </div>
+                    {{form_user.first_name}}
                 </div>
-                <div class="col-md-2">
-                    <label for="email">E-mail:</label>
-                    <input type="email" name="email">
+                <div class="col-md-3">
+                    <div class="label-form">
+                        {{form_user.last_name.label}}
+                    </div>
+                    {{form_user.last_name}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="first_name">First Name:</label>
-                    <input type="text" name="first_name">
+                    <div class="label-form">
+                        {{form_user.username.label}}
+                    </div>
+                    {{form_user.username}}
+                    <div class="help-form">
+                        {{form_user.username.help_text}}
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <label for="last_name">Last Name:</label>
-                    <input type="text" name="last_name">
+                    <div class="label-form">
+                        {{form_user.email.label}}
+                    </div>
+                    {{form_user.email}}
+                    <div class="help-form">
+                        {{form_user.email.help_text}}
+                    </div>
+                    <span class="text-danger">{{form_user.email.errors}}</span>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password">
+                    <div class="label-form">
+                        {{form_user.password.label}}
+                    </div>
+                    {{form_user.password}}
+                    <div class="help-form">
+                        {{form_user.password.help_text}}
+                    </div>
                 </div>
+                <div class="col-md-3">
+                   <div class="label-form">
+                        {{form_user.password2.label}}
+                   </div>
+                    {{form_user.password2}}
+                    <span class="text-danger">{{form_user.password2.errors}}</span>
+                </div>
+            </div>
+            <hr>
+            <h6>Dados Pessoais</h6>
+            <div class="row">
+                <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+            </div>
+            <hr>
+            <h6>Dados Profissionais</h6>
+            <div class="row">
+                <div class="col-3">
+                   <div>
+                    {{form.conselho.label}}
+                   </div>
+                    {{form.conselho}}
+                </div>
+                <div class="col-md-3">
+                    {{form.numero_conselho.label}}
+                    {{form.numero_conselho}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    {{form.especialidade.label}}
+                    {{form.especialidade}}
+                </div>
+            </div>
+            <div class="mt-3">
+                <a class="btn btn-danger"  href="{% url 'clinicareapi:profissional_list_view' %}">Cancelar</a>
+                <button class="btn btn-round btn-success button-prevent-multi-submits" type="submit">Cadastrar</button>
             </div>
         </form>
     </div>
 {% endblock content %}
 
+{% block scripts %}
+<script src="{% static 'clinicareapi/js/jquery.mask.min.js'%}"></script>
+<script>
+    $(document).ready(function(){
+        $('#cpf_input').mask('000.000.000-00');
+        $('#telefone_input').mask('(00) 00000-0000')
+    })
+</script>
+{% endblock scripts %}

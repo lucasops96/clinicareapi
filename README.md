@@ -23,3 +23,4 @@ Projeto consiste em uma API voltado para área da saúde, no qual, profissionais
 - [] Deve ser possível um Profissional genreciar suas Consultas
 
 - https://pythonacademy.com.br/blog/como-utilizar-as-class-based-views-do-django
+- https://igorescobar.github.io/jQuery-Mask-Plugin/

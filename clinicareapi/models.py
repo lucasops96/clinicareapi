@@ -22,6 +22,9 @@ class Endereco(models.Model):
 class Conselho(models.Model):
     nome = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.nome
+
 class ProfissionalSaude(models.Model):
     user_profissional = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     especialidade = models.CharField(max_length=100)
