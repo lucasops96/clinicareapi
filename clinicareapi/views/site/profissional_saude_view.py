@@ -1,7 +1,7 @@
 from typing import Any
 from django.http import HttpRequest, HttpResponse
 from django.views.generic import CreateView , ListView
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from ...models import ProfissionalSaude, CustomUser, User
 from ...forms.profissional_form import ProfissionalSaudeForm
@@ -28,9 +28,7 @@ class ProfissionalSaudeCreateView(CreateView):
         form_user = UserForm(request.POST)
         form_custom = CustomUserForm(request.POST)
         form = ProfissionalSaudeForm(request.POST)
-        print('-----------',form_user)
-        print('-----------',form_custom)
-        print('-----------',form)
+        
         if form_user.is_valid() and form_custom.is_valid() and form.is_valid():
             user = form_user.save(commit=False)
             user.set_password(user.password)
@@ -52,6 +50,14 @@ class ProfissionalSaudeCreateView(CreateView):
                 reverse('clinicareapi:profissional_list_view')
             )
         
-        return redirect(reverse('clinicareapi:profissional_create_view'))
-
+        return render(
+            request,
+            self.template_name,
+            {
+                'form_user': form_user,
+                'form_custom': form_custom,
+                'form': form,
+            }
+        )
+    
     

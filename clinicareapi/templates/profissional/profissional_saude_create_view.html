@@ -44,7 +44,6 @@
                     <div class="help-form">
                         {{form_user.email.help_text}}
                     </div>
-                    <span class="text-danger">{{form_user.email.errors}}</span>
                 </div>
             </div>
             <div class="row">
@@ -62,9 +61,18 @@
                         {{form_user.password2.label}}
                    </div>
                     {{form_user.password2}}
-                    <span class="text-danger">{{form_user.password2.errors}}</span>
+                    
                 </div>
             </div>
+            {% if form_user.errors %}
+                {% for field, errors in form_user.errors.items %}
+                    {% for error in errors %}
+                        <div>
+                            <span class="text-danger">{{ error }}</span>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
             <hr>
             <h6>Dados Pessoais</h6>
             <div class="row">

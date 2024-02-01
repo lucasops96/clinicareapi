@@ -9,45 +9,45 @@ class UserForm(forms.ModelForm):
         error_messages={
             'required':'This field must not be empty'
         },
-        widget= forms.TextInput(attrs={'placeholder':'Your username'}),
+        widget= forms.TextInput(attrs={'placeholder':'Seu username'}),
         help_text=(
-            'Username must have letters, numbers or one of those @.+-_. '
+            'O nome de usuário deve conter letras, números ou um desses @.+-_.'
         ),
     )
 
     email = forms.EmailField(
         label='E-mail',
-        help_text='The e-mail must be valid',
-        widget= forms.EmailInput(attrs={'placeholder':'Your e-mail'}),
+        help_text='O e-mail deve ser válido',
+        widget= forms.EmailInput(attrs={'placeholder':'Seu e-mail'}),
         error_messages={'required': 'E-mail is required'},
     )
 
     first_name = forms.CharField(
-        label='First Name',
+        label='Primeiro Nome',
         error_messages={'required': 'Write your first name'},
         widget= forms.TextInput(attrs={'placeholder':'Ex.: Miguel'})
     )
 
     last_name = forms.CharField(
-        label='Last Name',
+        label='Último Nome',
         error_messages={'required':'Write your last name'},
         widget= forms.TextInput(attrs={'placeholder':'Ex.: Silva'})
     )
 
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder':'Type your password'}),
-        label='Password',
+        widget=forms.PasswordInput(attrs={'placeholder':'Digite uma senha'}),
+        label='Senha',
         error_messages={'required':'Password must not be empty'},
         help_text=(
-            'Password must have at least one uppercase letter, '
-            'one lowercase letter and one number. The length should be '
-            'at least 8 characters.'
+            'A senha deve ter pelo menos uma letra maiúscula,  '
+            'uma letra minúscula e um número. Com a quantidade'
+            'de pelo menos 8 caracteres.'
         ),
     )
 
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder':'Repeat your password'}),
-        label='Confirm Password',
+        widget=forms.PasswordInput(attrs={'placeholder':'Repita sua senha'}),
+        label='Confirme sua Senha',
         error_messages={
             'required':'Please, repeat your password'
         },
@@ -68,10 +68,8 @@ class UserForm(forms.ModelForm):
         user  = User.objects.filter(email=email).exists()
 
         if user:
-            raise ValidationError(
-                'User e-mail is already in use',code='invalid',
-            )
-        
+            self.add_error('email','Este e-mail está em uso por outro Usuário.')
+
         return email
     
     def clean(self):
@@ -81,13 +79,4 @@ class UserForm(forms.ModelForm):
         password2 = clean_data.get('password2')
         
         if password != password2:
-            password_error = ValidationError(
-                'Password and Confirm Password must be equal'
-            )
-
-            raise ValidationError({
-                'password':password_error,
-                'password2':[
-                    password_error,
-                ],
-            })
+            self.add_error('password','Senha deve ser igual Confirme sua Senha.')
