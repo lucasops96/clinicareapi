@@ -2,21 +2,17 @@ from django import forms
 from ..models import ProfissionalSaude
 
 class ProfissionalSaudeForm(forms.ModelForm):
+
     class Meta:
         model = ProfissionalSaude
-        fields = 'user_profissional','especialidade', 'conselho', 'numero_conselho'
+        fields = ['especialidade', 'conselho', 'numero_conselho']
+        exclude = ['user_profissional']
         labels = {
-            'especialidade':'Especialidade:',
-            'conselho':'Conselho:',
-            'numero_conselho':'N° Conselho:'
+            'especialidade':'Especialidade',
+            'conselho':'Conselho',
+            'numero_conselho':'N° Conselho'
         }
         widgets = {
-            'conselho': forms.Select(
-                choices=(
-                    ('CRO','CRO'),
-                    ('CRM','CRM'),
-                    ('CREFITO','CREFITO'),
-                    ('CREF','CREF'),
-                ),
-            ),
+            'especialidade':forms.TextInput(attrs={'required':True}),
+            'numero_conselho':forms.TextInput(attrs={'required':True}),
         }

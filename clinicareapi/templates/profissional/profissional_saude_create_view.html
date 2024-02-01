@@ -69,29 +69,39 @@
             <h6>Dados Pessoais</h6>
             <div class="row">
                 <div class="col-md-3">
-                    
+                    <div class="label-form">
+                        {{form_custom.cpf.label}}
+                    </div>
+                    {{form_custom.cpf}}
                 </div>
                 <div class="col-md-3">
-                    
+                    <div class="label-form">
+                        {{form_custom.telefone.label}}
+                    </div>
+                    {{form_custom.telefone}}
                 </div>
             </div>
             <hr>
             <h6>Dados Profissionais</h6>
             <div class="row">
                 <div class="col-3">
-                   <div>
+                   <div class="label-form">
                     {{form.conselho.label}}
                    </div>
                     {{form.conselho}}
                 </div>
                 <div class="col-md-3">
-                    {{form.numero_conselho.label}}
+                    <div class="label-form">
+                        {{form.numero_conselho.label}}
+                    </div>
                     {{form.numero_conselho}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    {{form.especialidade.label}}
+                    <div class="label-form">
+                        {{form.especialidade.label}}
+                    </div>
                     {{form.especialidade}}
                 </div>
             </div>
@@ -107,8 +117,10 @@
 <script src="{% static 'clinicareapi/js/jquery.mask.min.js'%}"></script>
 <script>
     $(document).ready(function(){
-        $('#cpf_input').mask('000.000.000-00');
-        $('#telefone_input').mask('(00) 00000-0000')
+        $('#id_cpf').mask('000.000.000-00');
+        $('#id_telefone').mask('(00) 00000-0000')
+
+        $('#id_conselho').attr('required',true);
     })
 </script>
 {% endblock scripts %}
