@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
+{% block title %}Login{% endblock title %}
+
 {% block content %}
 <div>
     <h3>Bem-vindo(a)</h3>
     <div class="card mt-3 p-3 card-login">
         <h5>Realize seu login no Clini Care</h5>
         {% include "partials/messages.html" %}
-        <form action="" method="post">
+        <form 
+        class="form-prevent-multi-submits" 
+        action="{% url 'clinicareapi:login_create' %}" 
+        method="post">
+        {% csrf_token %}
             <div class="row">
                 <div class="">
                     <div class="label-form">
-                        {{form.email.label}}
+                        {{form.username.label}}
                     </div>
-                    {{form.email}}
+                    {{form.username}}
                 </div>
             </div>
             <div class="row">

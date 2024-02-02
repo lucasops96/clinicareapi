@@ -12,7 +12,7 @@ from ...forms.custom_user_form import CustomUserForm
 class ProfissionalSaudeListView(ListView):
     template_name = 'profissional/profissional_saude_list_view.html'
     model = ProfissionalSaude
-    
+
 
 class ProfissionalSaudeCreateView(CreateView):
     template_name = 'profissional/profissional_saude_create_view.html'

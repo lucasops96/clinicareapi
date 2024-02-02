@@ -1,0 +1,35 @@
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel">
+      <div class="container">
+        <a class="navbar-brand mr-4" href="">Clini Care</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{% url  'clinicareapi:profissional_list_view' %}">Home</a>
+            <a class="nav-item nav-link" href="{% url 'clinicareapi:profissional_create_view'%}">About</a>
+          </div>
+          <!-- Navbar Right Side -->
+          <div class="navbar-nav">
+            {% if request.user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{request.user.get_full_name}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'clinicareapi:dashboard' %}">Meu Dashboard</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  {% include 'partials/form_logout.html' %}
+                  <a id='link_sair' class="dropdown-item" href="#">Sair</a>
+                </div>
+              </li>
+            {% else %}
+              <a class="nav-item nav-link" href="{% url 'clinicareapi:login' %}">Login</a>
+              <a class="nav-item nav-link" href="#">Register</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+</header>

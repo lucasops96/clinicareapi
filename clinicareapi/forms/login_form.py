@@ -3,9 +3,9 @@ from django import forms
 
 class LoginForm(forms.Form):
 
-    email = forms.EmailField(
-        label='E-mail',
-        widget=forms.EmailInput(attrs={'placeholder':'Digite seu e-mail'}),
+    username = forms.CharField(
+        label='Username',
+        widget=forms.TextInput(attrs={'placeholder':'Digite seu username'}),
     )
     password = forms.CharField(
         label='Senha',

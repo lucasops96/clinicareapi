@@ -22,7 +22,10 @@ urlpatterns = [
     path('',site.ProfissionalSaudeListView.as_view(),name='profissional_list_view'),
     path('register/healthcare/professional/',site.ProfissionalSaudeCreateView.as_view(),name='profissional_create_view'),
 
-    path('login/',site.login,name='login'),
+    path('login/',site.login_view,name='login'),
+    path('login/create/',site.login_create,name='login_create'),
+    path('logout/',site.logout_view,name='logout'),
+    path('dashboard/',site.dashboard,name='dashboard'),
 
     # urls api
     path('clinicare/api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
