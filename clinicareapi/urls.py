@@ -18,9 +18,13 @@ router.register('clinicareapi/user',views.UserViewSet,basename='user')
 router.register('clinicareapi/endereco',views.EnderecoViewSet,basename='endereco')
 
 urlpatterns = [
+    # urls site
     path('',site.ProfissionalSaudeListView.as_view(),name='profissional_list_view'),
-    path('register/healthcare/professional',site.ProfissionalSaudeCreateView.as_view(),name='profissional_create_view'),
+    path('register/healthcare/professional/',site.ProfissionalSaudeCreateView.as_view(),name='profissional_create_view'),
 
+    path('login/',site.login,name='login'),
+
+    # urls api
     path('clinicare/api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('clinicare/api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('clinicare/api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),

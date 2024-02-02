@@ -3,6 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from django.views.generic import CreateView , ListView
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.contrib import messages
 from ...models import ProfissionalSaude, CustomUser, User
 from ...forms.profissional_form import ProfissionalSaudeForm
 from ...forms.user_form import UserForm
@@ -46,8 +47,10 @@ class ProfissionalSaudeCreateView(CreateView):
             profissional.user_profissional = custom_user
             profissional.save()
 
+            messages.success(request,'Usuário salvo com sucesso!')
+
             return redirect(
-                reverse('clinicareapi:profissional_list_view')
+                reverse('clinicareapi:login')
             )
         
         return render(
