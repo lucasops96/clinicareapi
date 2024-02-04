@@ -20,7 +20,12 @@ router.register('clinicareapi/endereco',views.EnderecoViewSet,basename='endereco
 urlpatterns = [
     # urls site
     path('',site.ProfissionalSaudeListView.as_view(),name='profissional_list_view'),
-    path('register/healthcare/professional/',site.ProfissionalSaudeCreateView.as_view(),name='profissional_create_view'),
+    path('register/healthcare/professional/',
+         site.ProfissionalSaudeCreateView.as_view(),
+         name='profissional_create_view'),
+    path('detail/profissional/<int:pk>',
+         site.ProfissionalSaudeDetailView.as_view(),
+         name='profissional_detail_view'),
 
     path('login/',site.login_view,name='login'),
     path('login/create/',site.login_create,name='login_create'),

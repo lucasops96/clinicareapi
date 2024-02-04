@@ -4,6 +4,7 @@
 
 {% block content %}
 <h3>Meu Dashboard</h3>
+{% include "partials/messages.html" %}
 <div class="card  mt-3 p-3">
     {% for consulta in consultas %}
         <div>
@@ -13,3 +14,13 @@
     {% endfor %}
 </div>
 {% endblock content %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+        setTimeout(function(){
+            $('#flash-message').remove();
+        },3000);
+    })
+</script>
+{% endblock scripts %}

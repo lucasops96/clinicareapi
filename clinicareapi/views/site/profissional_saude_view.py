@@ -1,6 +1,6 @@
 from typing import Any
 from django.http import HttpRequest, HttpResponse
-from django.views.generic import CreateView , ListView
+from django.views.generic import CreateView , ListView, DetailView
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib import messages
@@ -62,5 +62,7 @@ class ProfissionalSaudeCreateView(CreateView):
                 'form': form,
             }
         )
-    
-    
+
+class ProfissionalSaudeDetailView(DetailView):
+    template_name = 'profissional/profissional_saude_detail_view.html'
+    model = ProfissionalSaude
