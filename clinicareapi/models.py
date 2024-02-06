@@ -10,6 +10,11 @@ class CustomUser(models.Model):
     telefone = models.CharField(max_length=15,blank=True,null=True)
     is_profissional_saude = models.BooleanField(default=False)
 
+    @property
+    def id_profissional(self):
+        profissional = ProfissionalSaude.objects.filter(user_profissional=self).first()
+        return profissional.pk
+
 class Endereco(models.Model):
     rua = models.CharField(max_length=255)
     numero = models.CharField(max_length=10)

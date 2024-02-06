@@ -7,8 +7,9 @@
     {% for profissional in object_list %}
         <div class="card mt-3 p-3">
             <div>
-                <h5 class="profissional-name">{{profissional.user_profissional.user_custom.get_full_name}}</h5>
-                {{ profissional.user_profissional.cpf }}
+                <a href="{% url 'clinicareapi:profissional_detail_view' profissional.pk %}">
+                    <h5 class="profissional-name">{{profissional.user_profissional.user_custom.get_full_name}}</h5>
+                </a>
             </div>
             <hr>
             <div>

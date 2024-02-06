@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Perfil{% endblock title %}
+
 {% block content %}
 <div class="card mt-3 p-3">
     <div class="header-perfil">
@@ -35,8 +37,32 @@
     <hr>
     <h4>Principais Locais de Atuação</h4>
     <div class="locais-perfil">
-
+        {% for endereco in object.enderecos_atendimento.all %}
+            <div class="card-local">
+                <h6>{{endereco.rua}} N°{{endereco.numero}}</h6>
+                <div>{{endereco.cidade}}-{{endereco.estado}}</div>
+                <div><strong>Complemento:</strong> {{endereco.complemento}}</div>
+            </div>
+        {% endfor %}
     </div>
-    
+    <hr>
+    <h4>Contato</h4>
+    <div class="contato-perfil">
+        <p>Entre em contato pelo whatsapp, redes sociais, e-mail ou agendamento.</p>
+        <ul class="contato-info">
+            <li>
+                <p><strong>Whatsapp: {{object.user_profissional.telefone}}</strong></p>
+            </li>
+            <li>
+                <p><strong>Instagram:</strong></p>
+            </li>
+            <li>
+                <p><strong>Facebook:</strong></p>
+            </li>
+            <li>
+                <p><strong>E-mail: {{object.user_profissional.user_custom.email}}</strong></p>
+            </li>
+        </ul>
+    </div>
 </div>
 {% endblock content %}
