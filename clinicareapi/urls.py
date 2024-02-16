@@ -26,6 +26,9 @@ urlpatterns = [
     path('detail/profissional/<int:pk>',
          site.ProfissionalSaudeDetailView.as_view(),
          name='profissional_detail_view'),
+    path('update/profissional/<int:pk>',
+        site.ProfissionalSaudeUpdateView.as_view(),
+        name='profissional_update_view'),
 
     path('login/',site.login_view,name='login'),
     path('login/create/',site.login_create,name='login_create'),

@@ -2,7 +2,7 @@ from typing import Any
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
 from django.http import HttpRequest, HttpResponse
-from django.views.generic import CreateView , ListView, DetailView
+from django.views.generic import CreateView , ListView, DetailView, UpdateView
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.contrib import messages
@@ -68,3 +68,26 @@ class ProfissionalSaudeCreateView(CreateView):
 class ProfissionalSaudeDetailView(DetailView):
     template_name = 'profissional/profissional_saude_detail_view.html'
     model = ProfissionalSaude
+
+class ProfissionalSaudeUpdateView(UpdateView):
+    template_name = 'profissional/profissional_saude_update_view.html'
+    model = ProfissionalSaude
+    form_class = ProfissionalSaudeForm
+
+    def render_forms(self,form,form_user,form_custom):
+        return render(
+            self.request,
+            self.template_name,
+            {
+                'form_user':form_user,
+                'form_custom':form_custom,
+                'form':form
+            }
+        )
+
+    def get(self,request,pk):
+        profissional = ProfissionalSaude.objects.filter(id=pk).first()
+        form = ProfissionalSaudeForm(instance=profissional)
+        form_custom = CustomUserForm(instance=profissional.user_profissional)
+        form_user = UserForm(instance=profissional.user_profissional.user_custom)
+        return self.render_forms(form,form_user,form_custom)
