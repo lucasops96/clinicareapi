@@ -71,3 +71,7 @@ def dashboard(request):
             },
         ],
     })
+
+
+def alterar_senha(request,pk):
+    return render(request,'partials/senha.html')

@@ -34,6 +34,7 @@ urlpatterns = [
     path('login/create/',site.login_create,name='login_create'),
     path('logout/',site.logout_view,name='logout'),
     path('dashboard/',site.dashboard,name='dashboard'),
+    path('senha/<int:pk>',site.alterar_senha,name='senha'),
 
     # urls api
     path('clinicare/api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
