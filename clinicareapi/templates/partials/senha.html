@@ -1,9 +1,13 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Alterar Senha{% endblock title %}
 
 {% block content %}
-<div class="card mt-3 p-3">
+<div class="mt-3" style="width:800px; margin:auto;">
+    {% include "partials/messages.html" %}
+</div>
+<div class="card mt-3 p-3" style="width:800px; margin:auto;">
     <div>
         <a href="{% url 'clinicareapi:profissional_update_view' request.user.user_custom.id_profissional %}">
             <i class="bi bi-arrow-return-left"></i>
@@ -12,8 +16,75 @@
     </div>
     <h5>Alterar senha</h5>
     <p>Crie uma senha nova com pelo menos 8 caracteres.</p>
-    <div class="row">
+    <form 
+        class="form-prevent-multi-submits" 
+        action="{% url 'clinicareapi:senha_alterada' request.user.id %}" 
+        method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-5 alterar-senha">
+                {{form.old_password|as_crispy_field}}
+            </div>
+            <span class="olho-senha">
+                <i id="olho-password" class="bi bi-eye"></i>
+            </span>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                {{form.new_password|as_crispy_field}}
+            </div>
+            <span class="olho-senha">
+                <i id="olho-new-password" class="bi bi-eye"></i>
+            </span>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                {{form.repeat_password|as_crispy_field}}
+            </div>
+            <span class="olho-senha">
+                <i id="olho-repeat-password" class="bi bi-eye"></i>
+            </span>
+        </div>
 
-    </div>
+        {% comment %} {% if form.errors %}
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        <div>
+                            <span class="text-danger">{{ error }}</span>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+        {% endif %} {% endcomment %}
+
+        <button class="btn btn-secondary button-prevent-multi-submits" type="submit">
+            Salvar senha
+        </button>
+    </form>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+<script>
+    $("#olho-password").mousedown(function() {
+        $("#id_old_password").attr("type", "text");
+    });
+    $("#olho-password").mouseup(function() {
+        $("#id_old_password").attr("type", "password");
+    });
+
+    $("#olho-new-password").mousedown(function() {
+        $("#id_new_password").attr("type", "text");
+    });
+    $("#olho-new-password").mouseup(function() {
+        $("#id_new_password").attr("type", "password");
+    });
+
+    $("#olho-repeat-password").mousedown(function() {
+        $("#id_repeat_password").attr("type", "text");
+    });
+    $("#olho-repeat-password").mouseup(function() {
+        $("#id_repeat_password").attr("type", "password");
+    });
+
+</script>
+{% endblock scripts %}

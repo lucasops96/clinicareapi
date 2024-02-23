@@ -4,7 +4,9 @@ from django.http import Http404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from ...models import User
 from ...forms.login_form import LoginForm
+from ...forms.user_form import UserPassword
 
 def login_view(request):
     form = LoginForm()
@@ -74,4 +76,34 @@ def dashboard(request):
 
 
 def alterar_senha(request,pk):
-    return render(request,'partials/senha.html')
+    
+    form = UserPassword()
+
+    return render(request,'partials/senha.html',{
+        'form':form
+    })
+
+def senha_alterada(request,pk):
+    user = User.objects.filter(id=pk).first()
+
+    if request.user.id != user.id or not request.POST:
+        raise Http404()
+
+    user_form = UserPassword(request.POST)
+
+    if user_form.is_valid():
+        print('-------------',user_form.cleaned_data.get('old_password',''))
+        if user.check_password(user_form.old_password):
+            user.set_password(user_form.new_password)
+            messages.success(request,'Senha alterada com sucesso!')
+        else:
+            messages.error(request,'Senha atual incorreta')
+
+        return render(request,'partials/senha.html',{
+            'form': UserPassword()
+        })
+    
+    return render(request,'partials/senha.html',{
+        'form':user_form
+    })
+            

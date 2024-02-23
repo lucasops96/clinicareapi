@@ -143,3 +143,34 @@ class UserUpdateForm(forms.ModelForm):
             'last_name',
             'email',
         ]
+
+
+class UserPassword(forms.Form):
+
+    old_password = forms.CharField(
+        widget= forms.PasswordInput(attrs={'placeholder':'Senha atual'}),
+        label='Digite sua senha atual',
+        error_messages={'required':'Senha atual obrigatório'}
+    )
+
+    new_password = forms.CharField(
+        widget= forms.PasswordInput(attrs={'placeholder':'Senha nova'}),
+        label='Digite sua senha nova',
+        error_messages={'required':'Senha nova obrigatório'}
+    )
+
+    repeat_password = forms.CharField(
+        widget= forms.PasswordInput(attrs={'placeholder':'Digitar senha novamente'}),
+        label='Reinsira sua senha nova',
+        error_messages={'required':'Reinsira nova senha obrigatório'}
+    )
+
+    def clean(self):
+        clean_data = super().clean()
+
+        new_password = clean_data.get('new_password')
+        repeat_password = clean_data.get('repeat_password')
+        
+        if new_password != repeat_password:
+            self.add_error('new_password','Nova Senha deve ser igual Reinsira sua Senha.')
+            
