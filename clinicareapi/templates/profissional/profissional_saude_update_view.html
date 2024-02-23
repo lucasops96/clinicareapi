@@ -60,11 +60,16 @@
         </div>
     </form>
 </div>
-<div class="card  mt-3 p-3">
-    <h5>Alterar dados de acesso</h5>
-   <div>
+<div class="card mt-3 p-3">
+    <h5>Alterar dados de acesso e informações</h5>
+    {% comment %} <div>
         <a class="btn btn-primary" href="{% url 'clinicareapi:senha' request.user.id %}">Alterar senha</a>
-   </div>
+    </div> {% endcomment %}
+    <ul class="list-group list-group-flush">
+        <a class="a-editar-perfil" href="{% url 'clinicareapi:senha' request.user.id %}"><li class="list-group-item">Alterar senha</li></a>
+        <li class="list-group-item">Endereços</li>
+        <li class="list-group-item">Atuações</li>
+    </ul>
 </div>
 {% endblock content %}
 
