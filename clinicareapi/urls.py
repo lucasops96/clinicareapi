@@ -29,6 +29,11 @@ urlpatterns = [
     path('update/profissional/<int:pk>',
         site.ProfissionalSaudeUpdateView.as_view(),
         name='profissional_update_view'),
+    
+    #endereco
+    path('endereco/list/',
+        site.EnderecoListView.as_view(),
+        name='endereco_list'),
 
     path('login/',site.login_view,name='login'),
     path('login/create/',site.login_create,name='login_create'),

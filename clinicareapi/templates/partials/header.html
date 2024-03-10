@@ -19,11 +19,11 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="{% url 'clinicareapi:dashboard' %}">Meu Dashboard</a>
-                  
                   <a class="dropdown-item" href="{% url 'clinicareapi:profissional_detail_view' request.user.user_custom.id_profissional %}">Perfil público</a>
 
                   <a class="dropdown-item" href="{% url 'clinicareapi:profissional_update_view' request.user.user_custom.id_profissional %}">Editar Perfil</a>
 
+                  
                   {% include 'partials/form_logout.html' %}
                   <a id='link_sair' class="dropdown-item" href="#">Sair</a>
                 </div>

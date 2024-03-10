@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Endereço{% endblock title %}
+
+{% block content %}
+<div class="card mt-3 p-3" style="width:800px; margin:auto;">
+    <div>
+        <a href="{% url 'clinicareapi:profissional_update_view' request.user.user_custom.id_profissional %}">
+            <i class="bi bi-arrow-return-left"></i>
+            Voltar
+        </a>
+    </div>
+    <div class="d-flex justify-content-between">
+        <h5>Endereços de Atendimento - {{ request.user.get_full_name}} </h5>
+        <button class="btn btn-primary col-md-2 float-right">
+            <i class="bi bi-file-plus"></i>
+            Adicionar
+        </button>
+    </div>
+    {% for endereco in object_list %}
+        <div class="card-local">
+            <h6>{{endereco.rua}} N°{{endereco.numero}}</h6>
+            <div><strong>Bairro:</strong> {{endereco.bairro}}</div>
+            <div><strong>Cidade-UF:</strong> {{endereco.cidade}}-{{endereco.estado}}</div>
+            <div><strong>Complemento:</strong> {{endereco.complemento}}</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

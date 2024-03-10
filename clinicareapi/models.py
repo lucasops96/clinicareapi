@@ -14,10 +14,26 @@ class CustomUser(models.Model):
     def id_profissional(self):
         profissional = ProfissionalSaude.objects.filter(user_profissional=self).first()
         return profissional.pk
+    
+    @property
+    def get_profissional(self):
+        profissional = ProfissionalSaude.objects.filter(user_profissional=self).first()
+        return profissional
+
+    @property
+    def id_paciente(self):
+        paciente = Paciente.objects.filter(user_paciente=self).first()
+        return paciente.pk
+
+    @property
+    def get_paciente(self):
+        paciente = Paciente.objects.filter(user_paciente=self).first()
+        return paciente
 
 class Endereco(models.Model):
     rua = models.CharField(max_length=255)
     numero = models.CharField(max_length=10)
+    bairro = models.CharField(max_length=255,default='Seu Bairro')
     complemento = models.CharField(max_length=255,blank=True,null=True)
     cidade = models.CharField(max_length=100)
     estado = models.CharField(max_length=100)
