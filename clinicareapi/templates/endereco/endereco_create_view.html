@@ -5,7 +5,53 @@
 {% block title %}Endereço{% endblock title %}
 
 {% block content %}
-<div class="card">
-    endereco
+<div class="card mt-3 p-3" style="width:800px; margin:auto;">
+    <h4>Adicionar Endereço de Atendimento - {{request.user.get_full_name}}</h4>
+    <hr>
+    <form class="form-prevent-multi-submits" action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                {{form.rua|as_crispy_field}}
+            </div>
+            <div class="col-md-2">
+                {{form.numero|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{form.bairro|as_crispy_field}}
+            </div>
+            <div class="col-md-4">
+                {{form.complemento|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{form.cidade|as_crispy_field}}
+            </div>
+            <div class="col-md-2">
+                {{form.estado|as_crispy_field}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{form.cep|as_crispy_field}}
+            </div>
+            <div class="col-md-2">
+                {{form.pais|as_crispy_field}}
+            </div>
+        </div>
+        <a class="btn btn-danger" 
+        href="{% url "clinicareapi:endereco_list" %}">
+        Cancelar
+        </a>
+        <button class="btn btn-round btn-success button-prevent-multi-submits" type="submit">
+            Adicionar
+        </button>
+    </form>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
