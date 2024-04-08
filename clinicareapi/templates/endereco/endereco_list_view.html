@@ -25,7 +25,7 @@
         </a>
     </div>
     {% for endereco in object_list %}
-        <div class="card-local">
+        <div class="card-local-list">
            <div class="row">
             <div class="col-md-10">
                 <h6>{{endereco.rua}} N°{{endereco.numero}}</h6>
@@ -34,9 +34,20 @@
                 <div><strong>Complemento:</strong> {{endereco.complemento}}</div>
             </div>
             <div class="col-md-2">
-                <a class="btn btn-primary" href="">Editar</a>
+                <a class="btn btn-primary btn-sm" title="Editar" 
+                href="{% url 'clinicareapi:endereco_update' endereco.pk %}">
+                   <i class="bi bi-pencil-square"></i>
+                </a>
+                <a class="btn btn-danger btn-sm mt-1" title="Excluir" 
+                href="{% url 'clinicareapi:endereco_delete' endereco.pk %}">
+                    <i class="bi bi-trash"></i>
+                 </a>
             </div>
            </div>
+        </div>
+    {%empty%}
+        <div>
+            <p>Não tem endereços cadastrados, clique no botão Adiconar para cadastrar.</p>
         </div>
     {% endfor %}
 </div>

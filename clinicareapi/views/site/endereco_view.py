@@ -1,6 +1,7 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib import messages
 from django.urls import reverse
+from django.http.response import HttpResponseRedirect
 from ...models import Endereco, ProfissionalSaude, Paciente
 from ...forms.endereco_form import EnderecoForm
 
@@ -34,6 +35,24 @@ class EnderecoCreateView(CreateView):
                 messages.success(request,'Endereço salvo com sucesso!')
             else:
                 messages.error(request,'Verifique os campos do endereço!')
-                return reverse('clinicareapi:endereco_create')
+                return HttpResponseRedirect(reverse('clinicareapi:endereco_create'))
 
+        return HttpResponseRedirect(reverse('clinicareapi:endereco_list'))
+
+class EnderecoUpdateView(UpdateView):
+    template_name = 'endereco/endereco_update_view.html'
+    model = Endereco
+    form_class = EnderecoForm
+
+    def get_success_url(self):
+        messages.success(self.request,'Endereço editado com sucesso!')
+        return reverse('clinicareapi:endereco_list')
+
+class EnderecoDeleteView(DeleteView):
+    template_name = 'endereco/endereco_delete_view.html'
+    model = Endereco
+    context_object_name = 'endereco'
+
+    def get_success_url(self):
+        messages.success(self.request,'Endereço excluído com sucesso!')
         return reverse('clinicareapi:endereco_list')

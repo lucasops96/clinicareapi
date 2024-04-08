@@ -37,6 +37,12 @@ urlpatterns = [
     path('endereco/create/',
         site.EnderecoCreateView.as_view(),
         name='endereco_create'),
+    path('endereco/update/<int:pk>',
+        site.EnderecoUpdateView.as_view(),
+        name='endereco_update'),
+    path('endereco/delete/<int:pk>',
+        site.EnderecoDeleteView.as_view(),
+        name='endereco_delete'),
 
     path('login/',site.login_view,name='login'),
     path('login/create/',site.login_create,name='login_create'),
