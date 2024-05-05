@@ -4,12 +4,13 @@ Projeto consiste em um Site/API voltado para área da saúde, no qual, profissio
 ## Requesitos Não Funcionais
 - [] Listar informações para Pacientes e Profissionais Saúde
 - [] Autenticação JWT
+- [x] Autenticação do Django
 
 ## Requesitos Pacientes
-- [x] Deve ser possível um Paciente realizar seu registro
-    - [x] password validado 
-    - [x] email validado 
-    - [x] cpf validado
+- [] Deve ser possível um Paciente realizar seu registro
+    - [] password validado 
+    - [] email validado 
+    - [] cpf validado
 - [] Login
 - [] Solicitar Consulta
 
@@ -17,10 +18,13 @@ Projeto consiste em um Site/API voltado para área da saúde, no qual, profissio
 - [x] Deve ser possível um Profissional realizar seu registro
     - [x] password validado 
     - [x] email validado 
-    - [x] cpf validado
-- [] Deve ser possível um Profissional realizar seu Login
-- [] Deve ser possível um Profissional realizar Update no seu User
+    - [] cpf validado
+- [X] Deve ser possível um Profissional realizar seu Login
+- [X] Deve ser possível um Profissional alterar seus dados pessoais
+- [X] Deve ser possível um Profissional gerenciar seus endereços de atendimentos
 - [] Deve ser possível um Profissional genreciar suas Consultas
 
+
+links úteis:
 - https://pythonacademy.com.br/blog/como-utilizar-as-class-based-views-do-django
 - https://igorescobar.github.io/jQuery-Mask-Plugin/
