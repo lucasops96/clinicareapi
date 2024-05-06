@@ -30,7 +30,7 @@
               </li>
             {% else %}
               <a class="nav-item nav-link" href="{% url 'clinicareapi:login' %}">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a>
+              <a class="nav-item nav-link" href="{% url "clinicareapi:paciente_create_view" %}">Register</a>
             {% endif %}
           </div>
         </div>
