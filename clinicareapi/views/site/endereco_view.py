@@ -28,6 +28,8 @@ class EnderecoCreateView(CreateView):
             endereco = EnderecoForm(request.POST)
             if endereco.is_valid():
                 endereco = Endereco.objects.create(**endereco.cleaned_data)
+                endereco.cidade = endereco.cidade.upper()
+                endereco.estado = endereco.estado.upper() 
                 endereco.save()
                 profissional = ProfissionalSaude.objects.filter(id=self.request.user.user_custom.id_profissional).first()
                 profissional.enderecos_atendimento.add(endereco.pk)
@@ -47,6 +49,12 @@ class EnderecoUpdateView(UpdateView):
     def get_success_url(self):
         messages.success(self.request,'Endereço editado com sucesso!')
         return reverse('clinicareapi:endereco_list')
+
+    def form_valid(self, form):
+        endereco = form.save(commit=False)
+        endereco.cidade = endereco.cidade.upper()
+        endereco.estado = endereco.estado.upper()
+        return super().form_valid(form)   
 
 class EnderecoDeleteView(DeleteView):
     template_name = 'endereco/endereco_delete_view.html'

@@ -33,7 +33,7 @@ class CustomUser(models.Model):
 class Endereco(models.Model):
     rua = models.CharField(max_length=255)
     numero = models.CharField(max_length=10)
-    bairro = models.CharField(max_length=255,default='Seu Bairro')
+    bairro = models.CharField(max_length=255,default='')
     complemento = models.CharField(max_length=255,blank=True,null=True)
     cidade = models.CharField(max_length=100)
     estado = models.CharField(max_length=100)

@@ -1,11 +1,13 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Profissionais{% endblock title %}
 
 {% block content %}
     <h3>Conheça nossos profissionais</h3>
+
+    <div class="lista-profissionais">
     {% for profissional in object_list %}
-        <div class="card mt-3 p-3">
+        <div class="card card-profissional mt-3 p-3">
             <div>
                 <a href="{% url 'clinicareapi:profissional_detail_view' profissional.pk %}">
                     <h5 class="profissional-name">{{profissional.user_profissional.user_custom.get_full_name}}</h5>
@@ -19,7 +21,43 @@
                 {{profissional.conselho}}
                 {{profissional.numero_conselho}}
             </div>
+            <div>
+                    {{profissional.enderecos_atendimento.first.cidade}} - {{profissional.enderecos_atendimento.first.estado}}
+                {% if profissional.enderecos_atendimento.count > 1  %}
+                    <a href="" class="alocal" data-target="#mais-{{profissional.pk}}" data-toggle="collapse">
+                        Mais Locais
+                    </a> 
+                {% endif %}
+                <div id="mais-{{profissional.pk}}" class="collapse">
+                    {% for ed in profissional.enderecos_atendimento.all %}
+                        {% if forloop.first %}
+                        {% else %}
+                        <div>
+                            {{ed.cidade}} - {{ed.estado}}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <a class="a-agendar btn mt-1" href="#">Agendar</a>
         </div>
     {% endfor %}
+    </div>
 {% endblock content %}
+
+
+{% block scripts %}
+<script>
+    $('.alocal').on('click',function(){
+        if($(this).attr('aria-expanded') == 'true'){
+
+            $(this).html('Mais Locais');
+            
+        }else{
+            $(this).html('Menos Locais');
+
+        }
+    });
+</script>
+{% endblock scripts %}
 

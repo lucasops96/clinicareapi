@@ -56,6 +56,10 @@
 {% block scripts %}
 <script src="{% static 'clinicareapi/js/jquery.mask.min.js'%}"></script>
 <script>
-    $('#id_cep').mask('99.999-999')
+    $('#id_cep').mask('99.999-999');
+
+    $(document).ready(function(){
+        $('#id_cidade,#id_estado').css('text-transform','uppercase');
+    });
 </script>
 {% endblock scripts %}
